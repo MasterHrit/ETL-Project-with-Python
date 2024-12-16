@@ -47,4 +47,14 @@ Ensure the following libraries are installed:
 You can install the necessary Python packages using the following command:
 
 ```bash
-pip install pandas requests beautifulsoup4 sqlite3
+pip install pandas bs4 sqlite3
+```
+---
+
+## **Installation**
+1. Clone the repository to your local machine:
+   ```bash
+   git clone https://github.com/MasterHrit/ETL-Project-with-Python.git
+   cd ETL-Project-with-Python
+   ```
+2. Ensure you have the pre-requisite Python packages installed.
