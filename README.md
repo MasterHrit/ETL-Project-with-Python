@@ -17,22 +17,22 @@ You are a **Data Engineer** hired by a multi-national firm to process and manage
 1. **Extract Data**:
    - Extract tabular data from a web source under the heading *"By Market Capitalization"* and store it in a Pandas DataFrame.
 
-2. **Transform Data**:
+3. **Transform Data**:
    - Add new columns to the DataFrame for market capitalization in GBP, EUR, and INR.
    - Use the exchange rate information provided in a CSV file.
    - Ensure values are rounded to two decimal places.
 
-3. **Load Data**:
+4. **Load Data**:
    - Save the transformed data locally in a CSV file.
    - Load the data into a SQL database as a table.
 
-4. **Query Data**:
+5. **Query Data**:
    - Write and execute SQL queries to extract information for below
 	- Display all the entries from the table
 	- Display the Average GBP in Billion from the table
 	- Display the Top 5 Largest Banks from the table 
 
-5. **Logging**:
+6. **Logging**:
    - Implement a logging mechanism to track the progress and execution of each step.
    - Maintain detailed log entries for all operations, including data initialization and function calls.
 
@@ -73,3 +73,11 @@ This will perform the following operations:
 
 ---
 
+## **Code Explanation**
+1. **Logging Process**
+   - The log_progress function logs messages at various stages of the ETL process to a code_log.txt file.
+   
+2. **Extract Function**
+   - The extract function scrapes the list of largest banks and their market capitalizations in USD from the Wikipedia page.
+     
+   
