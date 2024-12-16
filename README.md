@@ -73,11 +73,91 @@ This will perform the following operations:
 
 ---
 
-## **Code Explanation**
-1. **Logging Process**
-   - The log_progress function logs messages at various stages of the ETL process to a code_log.txt file.
+## **Code Understanding**
+1. **Logging Process**</br></br>
+   - The log_progress function logs messages at various stages of the ETL process to a code_log.txt file.</br></br>
+   Log Function</br></br>
+   ![Log Function](screenshots/Task_1_log_function.png)</br></br>
+   Logging Output Screen</br></br>
+   ![Logging Output Screen](screenshots/Task_7_log_content.png)</br></br>
+2. **Extract Function**</br></br>
+   - The extract function scrapes the list of largest banks and their market capitalizations in USD from the Wikipedia page.</br></br>
+   Inspecting the Webpage to get Insights on Webpage Structure</br></br>
+   ![Inspecting the Webpage to get Insights on Webpage Structure](screenshots/Task_2a_extract.png)</br></br>
+   Extract Function</br></br>
+   ![Extract Function](screenshots/Task_2b_extract.png)</br></br>
+   Extracted Data Output</br></br>
+   ![Extracted Output](screenshots/Task_2c_extract.png)</br></br>
+3. **Transform Function**</br></br>
+   - The transform function adds columns for market capitalizations in GBP, EUR, and INR based on exchange rate data.</br></br>
+   Transform Function</br></br>
+   ![Transform Function](screenshots/Task_3a_transform.png)</br></br>
+   Transformed Data Output</br></br>
+   ![Transformed Data Output](screenshots/Task_3b_tranform.png)</br></br>
+4. **Load Functions**</br></br>
+   - The load_to_csv function saves the transformed data into a CSV file, and the load_to_db function saves it to a SQLite database.</br></br>
+   Load Function</br></br>
+   ![Load Function](screenshots/Task_4_5_save_file.png)</br></br>
+   CSV Output</br></br>
+   ![Load Function](screenshots/Task_4_CSV.png)</br></br>
+6. **Run Queries**</br></br>
+   - The run_query function executes SQL queries on the database to analyze the loaded data.</br></br>
+   SQL Queries Output</br></br>
+   ![SQL Queries Output](screenshots/Task_6_SQL.png)</br></br>
+7. **ETL Process Execution**</br></br>
+   - The ETL pipeline is executed by calling the functions in sequence:</br></br>
+   ```python
+   ''' Here, you define the required entities and call the relevant
+	functions in the correct order to complete the project. Note that this
+	portion is not inside any function.'''
+	
+	url="https://web.archive.org/web/20230908091635 /https://en.wikipedia.org/wiki/List_of_largest_banks"
+	table_attributes_extraction=["Name","MC_USD_Billion"]
+	table_attributes_final=["Name","MC_USD_Billion","MC_GBP_Billion","MC_EUR_Billion","MC_INR_Billion"]
+	output_csv_path="./Largest_banks_data.csv"
+	database_name="Banks"
+	table_name="Largest_banks"
+	exchange_rate_csv="exchange_rate.csv"
+	log_progress("Preliminaries complete. Initiating ETL process.")
+	
+	df=extract(url,table_attributes_extraction)
+	log_progress("Data extraction complete. Initiating Transformation process.")
+	
+	transformed_df=transform(df,exchange_rate_csv)
+	log_progress("Data transformation complete. Initiating Loading process.")
+	
+	load_to_csv(transformed_df, output_csv_path)
+	log_progress("Data saved to CSV file.")
+	
+	conn=sq.connect("Banks.db")
+	log_progress("SQL Connection initiated.")
+	
+	load_to_db(transformed_df, conn, table_name)
+	log_progress("Data loaded to Database as a table, Executing queries.")
+	
+	query1=f"SELECT * FROM {table_name}"
+	run_query(query1, conn)
+	query2=f"SELECT AVG(MC_GBP_Billion) FROM {table_name}"
+	run_query(query2, conn)
+	query3=f"SELECT Name from {table_name} limit 5"
+	run_query(query3, conn)
+	log_progress("Process Complete.")
+	
+	conn.close()
+	log_progress("Server Connection closed.")
+   ```
    
-2. **Extract Function**
-   - The extract function scrapes the list of largest banks and their market capitalizations in USD from the Wikipedia page.
-     
+   ---
    
+   ## **Output**
+   - **CSV File**: The transformed data is saved as Largest_banks_data.csv in the current directory.
+   - **Database**: The transformed data is loaded into a SQLite database named Banks.db, and queries are executed to display the data.
+
+   ---
+
+   ## **Notes**
+   - Make sure the exchange rate CSV file (exchange_rate.csv) is available and contains the correct exchange rates for USD to GBP, EUR, and INR.
+   - This project uses a static URL to scrape data. If the structure of the webpage changes, the extraction function may need to be updated.
+   - The log file (code_log.txt) tracks the progress of the ETL process.
+
+   ---
