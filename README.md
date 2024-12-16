@@ -57,4 +57,19 @@ pip install pandas bs4 sqlite3
    git clone https://github.com/MasterHrit/ETL-Project-with-Python.git
    cd ETL-Project-with-Python
    ```
-2. Ensure you have the pre-requisite Python packages installed.
+2. Ensure you have the Pre-requisite Python packages installed.
+
+---
+
+## **Usage**
+To run the ETL process, execute the following Python script:
+```bash
+python etl_script.py
+```
+This will perform the following operations:
+- Extract data from the specified URL page.
+- Transform the data by converting market capitalization values into GBP, EUR, and INR.
+- Load the transformed data into both a CSV file and a SQLite database.
+
+---
+
