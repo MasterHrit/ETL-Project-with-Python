@@ -73,11 +73,20 @@ This will perform the following operations:
 
 ---
 
-## **Code Explanation**
-1. **Logging Process**
-   - The log_progress function logs messages at various stages of the ETL process to a code_log.txt file.
-   
-2. **Extract Function**
-   - The extract function scrapes the list of largest banks and their market capitalizations in USD from the Wikipedia page.
+## **Code Understanding**
+1. **Logging Process**</br></br>
+   - The log_progress function logs messages at various stages of the ETL process to a code_log.txt file.</br></br>
+   Log Function</br>
+   ![Log Function](screenshots/Task_1_log_function.png)</br></br>
+   Logging Output Screen
+   ![Logging Output Screen](screenshots/Task_7_log_content.png)</br></br>
+2. **Extract Function**</br></br>
+   - The extract function scrapes the list of largest banks and their market capitalizations in USD from the Wikipedia page.</br></br>
+   Inspecting the Webpage to get Insights on Webpage Structure
+   ![Inspecting the Webpage to get Insights on Webpage Structure](screenshots/Task_2a_extract.png)</br></br>
+   Extract Function
+   ![Extract Function](screenshots/Task_2b_extract.png)</br></br>
+   Extracted Data Output
+   ![Extracted Output](screenshots/Task_2c_extract.png)</br></br>
      
    
