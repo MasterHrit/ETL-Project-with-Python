@@ -37,3 +37,14 @@ You are a **Data Engineer** hired by a multi-national firm to process and manage
    - Maintain detailed log entries for all operations, including data initialization and function calls.
 
 ---
+
+## **Pre-requisite**
+Ensure the following libraries are installed:
+- `pandas`
+- `bs4`
+- `sqlite3`
+
+You can install the necessary Python packages using the following command:
+
+```bash
+pip install pandas requests beautifulsoup4 sqlite3
