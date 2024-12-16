@@ -145,4 +145,19 @@ This will perform the following operations:
 	
 	conn.close()
 	log_progress("Server Connection closed.")
-```
+   ```
+   
+   ---
+   
+   ## **Output**
+   - **CSV File**: The transformed data is saved as Largest_banks_data.csv in the current directory.
+   - **Database**: The transformed data is loaded into a SQLite database named Banks.db, and queries are executed to display the data.
+
+   ---
+
+   ## **Notes**
+   - Make sure the exchange rate CSV file (exchange_rate.csv) is available and contains the correct exchange rates for USD to GBP, EUR, and INR.
+   - This project uses a static URL to scrape data. If the structure of the webpage changes, the extraction function may need to be updated.
+   - The log file (code_log.txt) tracks the progress of the ETL process.
+
+   ---
